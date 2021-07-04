@@ -72,6 +72,21 @@ for w in range(3):
     rnd += 1
     n += 1
 
+    # Share the win data with Bruce & Alicia
+    try:
+        # Instantiate third party Clients
+        configA = e3db.Config.load("alicia")
+        alicia = e3db.Client(configA)
+
+        configB = e3db.Config.load("bruce")
+        bruce = e3db.Client(configB)
+
+        # Share all of the records of type 'winners#'
+        clarence.share(record_type, bruce.client_id)
+        clarence.share(record_type, alicia.client_id)
+    except:
+        continue
+
 # Export w_record_ids list data to text file for winner.py
 with open("w_record_ids.txt", "wb") as output:
     pickle.dump(w_record_ids, output)

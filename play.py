@@ -56,6 +56,18 @@ while game < 3:
         # Save the record_id to a list for later reading
         a_record_ids.append(record_id)
 
+        # Share the data with Clarence initally and do not stop on error 409 if already shared.
+        try:
+            # Instantiate third party Client
+            configC = e3db.Config.load("clarence")
+            clarence = e3db.Client(configC)
+            # Share all of the records of type 'a_round#'
+            alicia.share(record_type, clarence.client_id)
+        except:
+            print("")
+        finally:
+            print("")
+
     counter = 0
     bruce_move = input("Bruce, enter your move...\n")
     while bruce_move not in moves and counter < 3:
@@ -96,6 +108,17 @@ while game < 3:
         # Save the record_id to a list for later reading
         b_record_ids.append(record_id)
 
+        # Share the data with Clarence initally and do not stop on error 409 if already shared.
+        try:
+            # Instantiate third party Client
+            configC = e3db.Config.load("clarence")
+            clarence = e3db.Client(configC)
+            # Share all of the records of type 'b_round#'
+            bruce.share(record_type, clarence.client_id)
+        except:
+            print("")
+        finally:
+            print("")
     game += 1
 else:
     print("\nYou've played 3 rounds and finished this game! Good job!\n")

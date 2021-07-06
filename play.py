@@ -65,8 +65,6 @@ while game < 3:
             alicia.share(record_type, clarence.client_id)
         except:
             print("")
-        finally:
-            print("")
 
     counter = 0
     bruce_move = input("Bruce, enter your move...\n")
@@ -117,8 +115,7 @@ while game < 3:
             bruce.share(record_type, clarence.client_id)
         except:
             print("")
-        finally:
-            print("")
+
     game += 1
 else:
     print("\nYou've played 3 rounds and finished this game! Good job!\n")
